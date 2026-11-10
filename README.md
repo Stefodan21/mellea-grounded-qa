@@ -13,8 +13,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-
-
 **Pick a document set:** the FIU course catalog / academic policies · a public product manual · government benefits or tax rules (e.g. IRS publications at `irs.gov`).
 
 **Contribute:** fork, pick an issue, open a PR. Interface (CLI / notebook / web) is your team's choice.
