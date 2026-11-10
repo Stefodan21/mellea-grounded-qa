@@ -5,6 +5,13 @@ Ask questions over a real set of documents and get answers that cite their sourc
 
 **Setup:** Python 3.12+ pip install mellea A backend: Ollama running an IBM Granite model locally, or a hosted Granite endpoint
 
+run:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+
+
 **Pick a document set:** the FIU course catalog / academic policies · a public product manual · government benefits or tax rules (e.g. IRS publications at `irs.gov`).
 
 **Contribute:** fork, pick an issue, open a PR. Interface (CLI / notebook / web) is your team's choice.
