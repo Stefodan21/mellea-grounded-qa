@@ -3,12 +3,15 @@
 ## Grounded Q&A Assistant
 Ask questions over a real set of documents and get answers that cite their source — and an honest "I don't know" when the answer isn't there, instead of a made-up one. Built with [Mellea](https://docs.mellea.ai).
 
-**Setup:** Python 3.12+ pip install mellea A backend: Ollama running an IBM Granite model locally, or a hosted Granite endpoint
+## Setup
 
-run:
+Requires Python 3.12+, `pip`, and a backend: Ollama running an IBM Granite model locally, or a hosted Granite endpoint.
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
 
 
 

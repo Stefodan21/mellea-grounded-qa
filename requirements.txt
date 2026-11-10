@@ -1,2 +1,3 @@
 mellea
 ollama
+streamlit
