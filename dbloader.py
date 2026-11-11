@@ -1,0 +1,69 @@
+import sys
+import os
+import json
+import python-docx
+import pathlib
+from docx import Document
+
+outputfile = pathlib.Path("chunkeddata/chunked.json")
+folder = pathlib.Path("corpus")
+
+# Make sure the output folder exists
+outputfile.parent.mkdir(parents=True, exist_ok=True)
+
+# Create the JSON file if it doesn't exist
+if not outputfile.exists():
+    with open(outputfile, "w") as f:
+        json.dump([], f)
+
+# Store the documents
+documents = []
+
+# Read each Word document
+try:
+    for file in folder.iterdir():
+        doc = Document(file)
+        
+        text = "\n".join([p.text for p in doc.paragraphs])
+        documents.append({
+            "file": str(file),
+            "text": text
+            })
+        
+except Exception as e:
+    raise Exception("Error processing file: " + str(file)) from e
+    
+# Write the documents to the JSON file
+with open(outputfile, "w", encoding="utf-8") as f:
+    json.dump(
+        documents, 
+        f, 
+        indent=4,
+        ensure_ascii=False,
+        sort_keys=False
+    )
+    
+
+
+# chunks = {}
+
+# output = "output.json"
+
+# dfolder = "corpus"
+# infofolder = "chunkeddata"
+# infopath = infofolder + "/" + output
+# file = "file.txt"
+
+# if not Path.exists(infopath):
+#     with open(infopath, "w") as f:
+#         json.dumps({}, f)
+
+
+# try:
+#     with open(dfolder + "/" + file) as f:
+#         json.load(f)
+
+# except FileNotFoundError:
+#     raise FileNotFoundError("File not found: " + dfolder + "/" + file)
+
+# for 
