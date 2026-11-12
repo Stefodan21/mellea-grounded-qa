@@ -6,7 +6,7 @@ import pathlib
 from docx import Document
 
 # Paths for the output JSON file and the folder containing Word documents
-outputfile = pathlib.Path("textjson/chunked.json")
+outputfile = pathlib.Path("textjson/text.json")
 folder = pathlib.Path("corpus")
 
 # Make sure the output folder exists

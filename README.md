@@ -11,6 +11,7 @@ Requires Python 3.12+, `pip`, and a backend: Ollama running an IBM Granite model
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 **Pick a document set:** the FIU course catalog / academic policies · a public product manual · government benefits or tax rules (e.g. IRS publications at `irs.gov`).

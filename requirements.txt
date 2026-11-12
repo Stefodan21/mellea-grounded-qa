@@ -1,3 +1,4 @@
 mellea
 ollama
 streamlit
+LangChain
