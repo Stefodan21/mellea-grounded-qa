@@ -2,6 +2,7 @@ import config as c
 import json
 import pathlib
 from docx import Document
+import easyocr
 
 # Paths for the output JSON file and the folder containing Word documents
 outputfile = pathlib.Path("textjson/text.json")
@@ -22,18 +23,28 @@ def load_documents():
     # Store the documents
     documents = []
     
-    
+    # to read text from images using OCR
+    reader = easyocr.Reader(["en"])    
 
     # Read each Word document
     try:
         for file in folder.iterdir():
-            doc = Document(file)
-            
-            text = "\n".join([p.text for p in doc.paragraphs])
+
+            if file.suffix.lower() == ".docx":
+                doc = Document(file)
+                text = "\n".join([p.text for p in doc.paragraphs])
+
+            elif file.suffix.lower() == ".png":
+                results = reader.readtext(str(file), detail=0)
+                text = "\n".join(results)
+
+            else:
+                continue
+
             documents.append({
                 "file": str(file),
                 "text": text
-                })
+            })
 
     # If any error occurs while processing a file, it will be raised with the file name included
     except Exception as e:
