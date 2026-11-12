@@ -3,3 +3,4 @@ ollama
 streamlit
 LangChain
 tiktoken
+python-docx
