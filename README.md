@@ -11,9 +11,39 @@ Requires Python 3.12+, `pip`, and a backend: Ollama running an IBM Granite model
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-**Pick a document set:** the FIU course catalog / academic policies · a public product manual · government benefits or tax rules (e.g. IRS publications at `irs.gov`).
+## Document set
+
+The corpus is the FIU computer science course syllabi. Place the source files in the `corpus/` folder. Supported formats: `.docx`, `.doc`, and `.png` (read with OCR).
+
+Other document sets work too, e.g. a public product manual or government benefits and tax rules (such as IRS publications at `irs.gov`).
+
+## Run the pipeline
+
+```bash
+python3 main.py
+```
+
+This runs the document loader (`dbloader.py`) and then the chunker (`chunker.py`).
+
+### Output
+
+| File | Contents |
+| --- | --- |
+| `textjson/text.json` | Extracted text with source filenames |
+| `chunkeddata/chunked_data.json` | Text chunks with source filenames and chunk IDs |
+
+### Configuration
+
+Chunking settings live in `config.py`:
+
+```python
+CHUNK_SIZE = 500          # tokens per chunk
+CHUNK_OVERLAP = 50        # tokens shared between adjacent chunks
+TOKENIZER = "cl100k_base"
+```
+
+## Contributing
 
 **Contribute:** fork, pick an issue, open a PR. Interface (CLI / notebook / web) is your team's choice.

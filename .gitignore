@@ -19,3 +19,6 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
+# Generated document data
+textjson/*.json
+chunkeddata/*.json

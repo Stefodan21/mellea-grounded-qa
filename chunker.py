@@ -2,6 +2,7 @@ import sys
 import config as c
 import os
 import json
+import logging
 import pathlib
 import dbloader as dbl
 from langchain_text_splitters import RecursiveCharacterTextSplitter as rcts
@@ -20,7 +21,7 @@ def chunk_documents():
         documents = json.load(f)
     
     if not documents:
-        print("Warning: No documents available for chunking.")
+        logging.warning("No documents available for chunking")
         return
 
     # Ensure the output directory exists before writing
@@ -40,6 +41,8 @@ def chunk_documents():
             # Write the JSON array by hand so entries stream out without holding all chunks in memory
             output.write("[\n")
             first = True
+            total_chunks = 0
+            logging.info("Starting document chunking")
             
             for doc in documents:
                 chunks = splitter.split_text(doc["text"])
@@ -61,9 +64,11 @@ def chunk_documents():
                     output.write(
                         json.dumps(entry, ensure_ascii=c.JSON_ENSURE_ASCII)
                     )
+                    total_chunks += 1
             output.write("\n]")
+        logging.info("Generated %d chunks", total_chunks)
     except FileNotFoundError as e:
-        print(f"Error: {e}")
+        logging.error("Error: %s", e)
         
 
 

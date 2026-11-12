@@ -1,5 +1,6 @@
 import config as c
 import json
+import logging
 import pathlib
 from docx import Document
 import easyocr
@@ -29,6 +30,7 @@ def load_documents():
 
     # Read each Word document
     try:
+        logging.info("Starting document extraction")
         for file in folder.iterdir():
 
             # for docx files
@@ -57,6 +59,9 @@ def load_documents():
                 "file": str(file),
                 "text": text
             })
+            logging.info("Processed: %s", file.name)
+
+        logging.info("Extracted %d documents", len(documents))
 
     # If any error occurs while processing a file, it will be raised with the file name included
     except Exception as e:
@@ -65,7 +70,7 @@ def load_documents():
     
     # Warn if no documents were loaded
     if not documents:
-        print("Warning: No documents found in the corpus folder.")
+        logging.warning("No documents found in the corpus folder")
         return
 
         
