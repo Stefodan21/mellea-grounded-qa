@@ -1,4 +1,5 @@
 import sys
+import config as c
 import os
 import json
 import python-docx
@@ -40,9 +41,9 @@ with open(outputfile, "w", encoding="utf-8") as f:
     json.dump(
         documents, 
         f, 
-        indent=4,
-        ensure_ascii=False,
-        sort_keys=False
+        indent=c.JSON_INDENT,
+        ensure_ascii=c.JSON_ENSURE_ASCII,
+        sort_keys=c.JSON_SORT_KEYS
     )
     
 

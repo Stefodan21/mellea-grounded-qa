@@ -1,10 +1,13 @@
 import sys
+import config as c
 import os
 import json
 import python-docx
 import pathlib
 import dbloader as dbl
 from langchain_text_splitters import RecursiveCharacterTextSplitter as rcts
+
+
 
 # checks if the text.json exists
 if not dbl.outputfile.exists():
@@ -16,9 +19,9 @@ with open(dbl.outputfile, "r") as f:
     
     
 splitter = rcts.from_tiktoken_encoder(
-    encoding_name="",
-    chunk_size=500,
-    chunk_overlap=200
+    encoding_name=c.TOKENIZER,
+    chunk_size=c.CHUNK_SIZE,
+    chunk_overlap=c.CHUNK_OVERLAP
 )
 for doc in documents:
 
