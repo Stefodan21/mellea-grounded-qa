@@ -2,3 +2,4 @@ mellea
 ollama
 streamlit
 LangChain
+tiktoken
