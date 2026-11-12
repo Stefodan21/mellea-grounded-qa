@@ -19,6 +19,26 @@ The corpus is the FIU computer science course syllabi. Place the source files in
 
 Other document sets work too, e.g. a public product manual or government benefits and tax rules (such as IRS publications at `irs.gov`).
 
+## Folder structure
+
+```text
+mellea-grounded-qa/
+|-- corpus/                   # Source documents to process
+|-- textjson/                 # Extracted document text (generated)
+|   `-- text.json
+|-- chunkeddata/              # Text chunks for retrieval (generated)
+|   `-- chunked_data.json
+|-- config.py                 # Chunking and JSON settings
+|-- dbloader.py               # Extracts text from source documents
+|-- chunker.py                # Splits extracted text into chunks
+|-- main.py                   # Runs the full processing pipeline
+|-- requirements.txt          # Python dependencies
+`-- README.md                 # Project documentation
+```
+
+The `textjson/` and `chunkeddata/` folders and their JSON files are created when the pipeline runs. The `.venv/` folder is also present after setting up the local Python environment; it is not part of the project source.
+
+
 ## Run the pipeline
 
 ```bash
@@ -47,3 +67,4 @@ TOKENIZER = "cl100k_base" # tiktoken encoding used to count tokens
 ## Contributing
 
 **Contribute:** fork, pick an issue, open a PR. Interface (CLI / notebook / web) is your team's choice.
+
