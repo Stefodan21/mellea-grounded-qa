@@ -3,6 +3,7 @@ import json
 import pathlib
 from docx import Document
 import easyocr
+from spire.doc import Document as SpireDocument
 
 # Paths for the output JSON file and the folder containing Word documents
 outputfile = pathlib.Path("textjson/text.json")
@@ -30,10 +31,21 @@ def load_documents():
     try:
         for file in folder.iterdir():
 
+            # for docx files
             if file.suffix.lower() == ".docx":
                 doc = Document(file)
                 text = "\n".join([p.text for p in doc.paragraphs])
 
+            # for doc files
+            elif file.suffix.lower() == ".doc":
+                doc = SpireDocument()
+                try:
+                    doc.LoadFromFile(str(file))
+                    text = doc.GetText()
+                finally:
+                    doc.Close()
+
+            #for png files
             elif file.suffix.lower() == ".png":
                 results = reader.readtext(str(file), detail=0)
                 text = "\n".join(results)
