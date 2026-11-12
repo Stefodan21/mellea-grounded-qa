@@ -37,14 +37,18 @@ except Exception as e:
     raise Exception("Error processing file: " + str(file)) from e
     
 # Write the documents to the JSON file
-with open(outputfile, "w", encoding="utf-8") as f:
-    json.dump(
-        documents, 
-        f, 
-        indent=c.JSON_INDENT,
-        ensure_ascii=c.JSON_ENSURE_ASCII,
-        sort_keys=c.JSON_SORT_KEYS
-    )
+try:
+    with open(outputfile, "w", encoding="utf-8") as f:
+        json.dump(
+            documents, 
+            f, 
+            indent=c.JSON_INDENT,
+            ensure_ascii=c.JSON_ENSURE_ASCII,
+            sort_keys=c.JSON_SORT_KEYS
+        )
+# If any error occurs while writing to the JSON file, it will be raised with the file name included
+except Exception as e:
+    raise Exception("Error writing to JSON file: " + str(outputfile)) from e
     
 
 if __name__ == "__main__":
