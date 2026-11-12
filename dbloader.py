@@ -5,7 +5,8 @@ import python-docx
 import pathlib
 from docx import Document
 
-outputfile = pathlib.Path("chunkeddata/chunked.json")
+# Paths for the output JSON file and the folder containing Word documents
+outputfile = pathlib.Path("textjson/chunked.json")
 folder = pathlib.Path("corpus")
 
 # Make sure the output folder exists
@@ -29,7 +30,8 @@ try:
             "file": str(file),
             "text": text
             })
-        
+
+# If any error occurs while processing a file, it will be raised with the file name included
 except Exception as e:
     raise Exception("Error processing file: " + str(file)) from e
     
@@ -44,6 +46,8 @@ with open(outputfile, "w", encoding="utf-8") as f:
     )
     
 
+if __name__ == "__main__":
+    main()
 
 # chunks = {}
 
