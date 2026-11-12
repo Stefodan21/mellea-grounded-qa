@@ -25,7 +25,7 @@ def load_documents():
     documents = []
     
     # to read text from images using OCR
-    reader = easyocr.Reader(["en"])    
+    reader = easyocr.Reader(["en"], gpu=False)    
 
     # Read each Word document
     try:
