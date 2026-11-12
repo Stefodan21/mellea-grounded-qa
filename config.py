@@ -4,7 +4,7 @@
 CHUNK_SIZE = 500
 # Tokens shared between neighboring chunks
 CHUNK_OVERLAP = 50
-# Token counting scheme
+# tiktoken encoding used to count tokens
 TOKENIZER = "cl100k_base"
 
 # JSON output formatting

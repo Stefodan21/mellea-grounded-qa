@@ -41,7 +41,7 @@ Chunking settings live in `config.py`:
 ```python
 CHUNK_SIZE = 500          # tokens per chunk
 CHUNK_OVERLAP = 50        # tokens shared between adjacent chunks
-TOKENIZER = "cl100k_base"
+TOKENIZER = "cl100k_base" # tiktoken encoding used to count tokens
 ```
 
 ## Contributing
