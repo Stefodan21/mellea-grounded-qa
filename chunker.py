@@ -4,7 +4,7 @@ import json
 import python-docx
 import pathlib
 import dbloader as dbl
-import LangChain as Lan
+from langchain_text_splitters import RecursiveCharacterTextSplitter as rcts
 
 # checks if the text.json exists
 if not dbl.outputfile.exists():
@@ -14,7 +14,14 @@ if not dbl.outputfile.exists():
 with open(dbl.outputfile, "r") as f:
     documents = json.load(f)
     
+    
+splitter = rcts.from_tiktoken_encoder(
+    encoding_name="",
+    chunk_size=500,
+    chunk_overlap=200
+)
 for doc in documents:
+
     
 
        

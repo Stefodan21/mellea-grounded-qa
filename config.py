@@ -1,0 +1,4 @@
+# config.py
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+TOKENIZER = "cl100k_base"
