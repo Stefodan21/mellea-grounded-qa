@@ -1,6 +1,6 @@
 mellea
 ollama
 streamlit
-LangChain
+langchain-text-splitters
 tiktoken
 python-docx
